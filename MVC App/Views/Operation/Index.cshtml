@@ -1,0 +1,105 @@
+﻿@model IEnumerable<OperationViewModel>
+@using Core_Services.Entities;
+
+@{
+    ViewData["Title"] = "Index";
+    var lOperations = (List<OperationEntity>)ViewBag.Operations;
+
+    decimal? totalARS = 0;
+    decimal? totalUSD = 0;
+
+    @foreach (var item in lOperations)
+    {
+        totalARS = totalARS + item.AmountARS;
+        totalUSD = totalUSD + item.AmountUSD;
+    }
+}
+
+<h1>Operations Summary</h1>
+
+@if (lOperations.Any())
+{
+    <p>
+        <a asp-action="Create">Create New</a> |
+        <a asp-action="ClearOperations" class="text-danger">Remove all operations</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AmountARS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AmountUSD)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in lOperations)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Account)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AmountARS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AmountUSD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="d-flex align-items-center justify-content-center p-3">
+        <div class="badge bg-indigo text-white p-3 me-3"><h6 class="m-0">Budget AR$ @totalARS</h6></div>
+        <div class="badge bg-success p-3"><h6 class="m-0">Budget USD$ @String.Format("{0:0.00}", totalUSD)</h6></div>
+    </div>
+}
+else
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <div class="d-flex flex-column align-items-center">
+        <img src="~/assets/img/error-305.gif" />
+        <h4 class="text-dark">Oops!</h4>
+        <p class="text-muted">There's no operations yet!</p>
+    </div>
+}

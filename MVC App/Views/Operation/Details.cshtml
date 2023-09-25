@@ -1,0 +1,58 @@
+﻿@model OperationViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Operation Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Account)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Account)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AmountARS)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AmountARS)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmountUSD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmountUSD)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+    </dl>
+</div>
+<form asp-action="Edit" class="d-flex flex-column">
+    <a asp-action="Index">Back to List</a>
+</form>
