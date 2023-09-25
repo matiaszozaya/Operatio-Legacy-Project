@@ -21,10 +21,11 @@ namespace Core_Services.Concrete
             operationEntity.Account = operation.Account;
             operationEntity.Description = operation.Description;
             operationEntity.AmountARS = operation.AmountARS;
-            operationEntity.AmountUSD = operation.AmountARS / DollarValues.PriceSell;
+            operationEntity.AmountUSD = operation.AmountUSD;
             operationEntity.Date = DateTime.Now;
 
             AppDatabase.Operations.Add(operationEntity);
+            AppDatabase.UpdateAmounts();
         }
 
         public bool Update(OperationEntity operation)
@@ -37,10 +38,12 @@ namespace Core_Services.Concrete
                 filtered.Account = operation.Account;
                 filtered.Description = operation.Description;
                 filtered.AmountARS = operation.AmountARS;
-                filtered.AmountUSD = operation.AmountARS / DollarValues.PriceSell;
+                filtered.AmountUSD = operation.AmountUSD;
 
                 updated = true;
             }
+
+            AppDatabase.UpdateAmounts();
 
             return updated;
         }

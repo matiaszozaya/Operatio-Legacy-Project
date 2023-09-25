@@ -1,0 +1,12 @@
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\bin\Debug\net6.0\linux-x64\Core Services.deps.json
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\bin\Debug\net6.0\linux-x64\Core Services.dll
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\bin\Debug\net6.0\linux-x64\Core Services.pdb
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\Core Services.csproj.AssemblyReference.cache
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\Core Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\Core Services.AssemblyInfoInputs.cache
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\Core Services.AssemblyInfo.cs
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\Core Services.csproj.CoreCompileInputs.cache
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\Core Services.dll
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\refint\Core Services.dll
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\Core Services.pdb
+C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\linux-x64\ref\Core Services.dll

@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Centvrio.Emoji/1.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Centvrio.Emoji.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Centvrio.Emoji.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -18,6 +31,21 @@
     }
   },
   "libraries": {
+    "Centvrio.Emoji/1.1.6": {
+      "sha512": "CV81NQMgEfW2qotnoB5le5OX64wD5eW5ISpJiO26QrQ8grFB5Xi/4/MPwA+aZV7hwEvDQZvJuNo1bjb2abpPvw==",
+      "type": "package",
+      "path": "centvrio.emoji/1.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "centvrio.emoji.1.1.6.nupkg.sha512",
+        "centvrio.emoji.nuspec",
+        "lib/netstandard2.0/Centvrio.Emoji.dll",
+        "lib/netstandard2.0/Centvrio.Emoji.xml",
+        "logo.png"
+      ]
+    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -51,6 +79,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Centvrio.Emoji >= 1.1.6",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
@@ -93,6 +122,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Centvrio.Emoji": {
+            "target": "Package",
+            "version": "[1.1.6, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"

@@ -1,7 +1,7 @@
-﻿$("main").css("min-height", "calc(98.2vh - " + ($("header").height() + $("footer").height()) + "px)");
+﻿$(document).ready(function () {
+    $("main").css("min-height", "calc(99.9% - " + ($("header").height() + $("footer").height()) + "px)");
 
-$(document).ready(function () {
     $(window).on("resize", function () {
-        $("main").css("min-height", "calc(98.2vh - " + ($("header").height() + $("footer").height()) + "px)");
+        $("main").css("min-height", "calc(99.9% - " + ($("header").height() + $("footer").height()) + "px)");
     });
 });

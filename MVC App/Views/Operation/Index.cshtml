@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<OperationViewModel>
+@using Centvrio.Emoji;
 @using Core_Services.Entities;
 
 @{
@@ -15,14 +16,18 @@
     }
 }
 
-<h1>Operations Summary</h1>
-
 @if (lOperations.Any())
 {
-    <p>
+    <img id="hero-img" src="~/assets/img/budget-planning.gif" style="max-width: 240px" />
+
+    <h1 id="title">Operations Summary</h1>
+
+    <p id="crud-options">
         <a asp-action="Create">Create New</a> |
         <a asp-action="ClearOperations" class="text-danger">Remove all operations</a>
     </p>
+
+    <a id="save-as-pdf" class="btn bg-indigo text-white mb-3">@BookPaper.PageFacingUp Save as .PDF</a>
 
     <table class="table">
         <thead>
@@ -34,19 +39,16 @@
                     @Html.DisplayNameFor(model => model.Type)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Account)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Description)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AmountARS)
+                    @Html.DisplayNameFor(model => model.Account)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AmountUSD)
+                    Amount AR$
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Date)
+                    Amount USD$
                 </th>
                 <th></th>
             </tr>
@@ -62,19 +64,16 @@
                         @Html.DisplayFor(modelItem => item.Type)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Account)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AmountARS)
+                        @Html.DisplayFor(modelItem => item.Account)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AmountUSD)
+                    <td class="text-primary fw-bold">
+                        AR$ @Html.DisplayFor(modelItem => item.AmountARS)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
+                    <td class="text-success fw-bold">
+                        USD$ @Html.DisplayFor(modelItem => item.AmountUSD)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -86,20 +85,30 @@
         </tbody>
     </table>
 
-    <div class="d-flex align-items-center justify-content-center p-3">
-        <div class="badge bg-indigo text-white p-3 me-3"><h6 class="m-0">Budget AR$ @totalARS</h6></div>
-        <div class="badge bg-success p-3"><h6 class="m-0">Budget USD$ @String.Format("{0:0.00}", totalUSD)</h6></div>
+    <div class="d-flex align-items-center justify-content-center p-3 mb-3">
+        <div class="badge bg-primary text-white p-3 me-3" style="font-size: 110%">AR$ @totalARS</div>
+        <div class="badge bg-success p-3" style="font-size: 110%">USD$ @String.Format("{0:0.00}", totalUSD)</div>
     </div>
 }
 else
 {
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-
-    <div class="d-flex flex-column align-items-center">
-        <img src="~/assets/img/error-305.gif" />
-        <h4 class="text-dark">Oops!</h4>
+    <div class="d-flex flex-column align-items-center mb-5">
+        <h2 class="fw-bold indigo">Oops!</h2>
         <p class="text-muted">There's no operations yet!</p>
+        <img src="~/assets/img/error-305.gif" />
     </div>
+
+    <a asp-action="Create" class="btn bg-indigo text-white">Create your first operation</a>
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        $("#save-as-pdf").on("click", function () {
+            $("#save-as-pdf, header, footer, #hero-img, #title, #crud-options").addClass("d-none");
+
+            print();
+
+            $("#save-as-pdf, header, footer, img, #title, #crud-options").removeClass("d-none");
+        });
+    </script>
 }

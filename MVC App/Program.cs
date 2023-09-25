@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 DollarValues.GetLastDollarValues();
 
 AppDatabase.InitializeDatabase();
-AppDatabase.UpdateAmountUSD();
+AppDatabase.UpdateAmounts();
 
 var builder = WebApplication.CreateBuilder(args);
 

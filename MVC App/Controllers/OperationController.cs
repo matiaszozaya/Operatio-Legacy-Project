@@ -82,6 +82,7 @@ namespace MVC_App.Controllers
                 operationEntity.Account = operation.Account;
                 operationEntity.Description = operation.Description;
                 operationEntity.AmountARS = operation.AmountARS;
+                operationEntity.AmountUSD = operation.AmountUSD;
 
                 _operationManager.Add(operationEntity);
 
@@ -128,6 +129,7 @@ namespace MVC_App.Controllers
                 operationEntity.Account = operation.Account;
                 operationEntity.Description = operation.Description;
                 operationEntity.AmountARS = operation.AmountARS;
+                operationEntity.AmountUSD = operation.AmountUSD;
 
                 _operationManager.Update(operationEntity);
 

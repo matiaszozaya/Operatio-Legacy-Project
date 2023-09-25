@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Centvrio.Emoji/1.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Centvrio.Emoji.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Centvrio.Emoji.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer/2.14.1": {
         "type": "package",
         "dependencies": {
@@ -3733,6 +3746,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Centvrio.Emoji": "1.1.6",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -3745,6 +3759,21 @@
     }
   },
   "libraries": {
+    "Centvrio.Emoji/1.1.6": {
+      "sha512": "CV81NQMgEfW2qotnoB5le5OX64wD5eW5ISpJiO26QrQ8grFB5Xi/4/MPwA+aZV7hwEvDQZvJuNo1bjb2abpPvw==",
+      "type": "package",
+      "path": "centvrio.emoji/1.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "centvrio.emoji.1.1.6.nupkg.sha512",
+        "centvrio.emoji.nuspec",
+        "lib/netstandard2.0/Centvrio.Emoji.dll",
+        "lib/netstandard2.0/Centvrio.Emoji.xml",
+        "logo.png"
+      ]
+    },
     "Humanizer/2.14.1": {
       "sha512": "/FUTD3cEceAAmJSCPN9+J+VhGwmL/C12jvwlyM1DFXShEMsBzvLzLqSrJ2rb+k/W2znKw7JyflZgZpyE+tI7lA==",
       "type": "package",

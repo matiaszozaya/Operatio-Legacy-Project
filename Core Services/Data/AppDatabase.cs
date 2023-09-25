@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Centvrio.Emoji;
 
 namespace Core_Services.Data
 {
@@ -21,8 +22,8 @@ namespace Core_Services.Data
                 {
                     Id = 1,
                     Type = "Necessity",
-                    Description = "Rent",
-                    Account = "",
+                    Description = $"{PlaceBuilding.House} Rent",
+                    Account = "Cash",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
                     Date = DateTime.Now,
@@ -32,8 +33,8 @@ namespace Core_Services.Data
                 {
                     Id = 2,
                     Type = "Necessity",
-                    Description = "Health Care",
-                    Account = "",
+                    Description = $"{PlaceBuilding.Hospital} Health Care",
+                    Account = "Cash",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
                     Date = DateTime.Now,
@@ -43,8 +44,8 @@ namespace Core_Services.Data
                 {
                     Id = 3,
                     Type = "Necessity",
-                    Description = "Electricity",
-                    Account = "",
+                    Description = $"{Computer.ElectricPlug} Electricity",
+                    Account = "Cash",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
                     Date = DateTime.Now,
@@ -54,8 +55,8 @@ namespace Core_Services.Data
                 {
                     Id = 4,
                     Type = "Necessity",
-                    Description = "Food Expenses",
-                    Account = "",
+                    Description = $"{FoodPrepared.PoultryLeg} Food Expenses",
+                    Account = "Cash",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
                     Date = DateTime.Now,
@@ -65,8 +66,8 @@ namespace Core_Services.Data
                 {
                     Id = 5,
                     Type = "Necessity",
-                    Description = "Internet",
-                    Account = "",
+                    Description = $"{Computer.Laptop} Internet",
+                    Account = "Cash",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
                     Date = DateTime.Now,
@@ -76,7 +77,7 @@ namespace Core_Services.Data
                 {
                     Id = 6,
                     Type = "Debt",
-                    Description = "Visa Card | Credit Card",
+                    Description = $"{Money.CreditCard} Visa Card | Credit Card",
                     Account = "Santander Rio",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
@@ -87,7 +88,7 @@ namespace Core_Services.Data
                 {
                     Id = 7,
                     Type = "Debt",
-                    Description = "American Express | Credit Card",
+                    Description = $"{Money.CreditCard} American Express | Credit Card",
                     Account = "Santander Rio",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
@@ -98,7 +99,7 @@ namespace Core_Services.Data
                 {
                     Id = 8,
                     Type = "Debt",
-                    Description = "Visa & Naranja | Credit Cards",
+                    Description = $"{Money.CreditCard} Visa & Naranja | Credit Cards",
                     Account = "Naranja X",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
@@ -109,7 +110,7 @@ namespace Core_Services.Data
                 {
                     Id = 9,
                     Type = "Debt",
-                    Description = "Mercado Credito | Credit Line",
+                    Description = $"{Money.Dollar} Mercado Credito | Credit Line",
                     Account = "MercadoPago",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
@@ -120,7 +121,7 @@ namespace Core_Services.Data
                 {
                     Id = 10,
                     Type = "Debt",
-                    Description = "Mastercard | Credit Card",
+                    Description = $"{Money.CreditCard} Mastercard | Credit Card",
                     Account = "Mi Carrefour",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
@@ -131,8 +132,8 @@ namespace Core_Services.Data
                 {
                     Id = 11,
                     Type = "Savings",
-                    Description = "",
-                    Account = "",
+                    Description = $"{Money.MoneyWithWings} Savings",
+                    Account = "Cash",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
                     Date = DateTime.Now,
@@ -142,8 +143,8 @@ namespace Core_Services.Data
                 {
                     Id = 12,
                     Type = "Investments",
-                    Description = "",
-                    Account = "",
+                    Description = $"{Money.MoneyWithWings} Investments",
+                    Account = "Cash",
                     AmountARS = (decimal?)0,
                     AmountUSD = 0,
                     Date = DateTime.Now,
@@ -151,11 +152,19 @@ namespace Core_Services.Data
             };
         }
 
-        public static void UpdateAmountUSD()
+        public static void UpdateAmounts()
         {
             foreach (var operation in Operations)
             {
-                operation.AmountUSD = operation.AmountARS / DollarValues.PriceSell;
+                if(operation.AmountUSD == null || operation.AmountUSD == 0)
+                {
+                    operation.AmountUSD = operation.AmountARS / DollarValues.PriceSell;
+                }
+
+                if (operation.AmountARS == null || operation.AmountARS == 0)
+                {
+                    operation.AmountARS = operation.AmountUSD * DollarValues.PriceSell;
+                }
             }
         }
 

@@ -25,10 +25,15 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group">
                 <label asp-for="AmountARS" class="control-label"></label>
-                <input asp-for="AmountARS" class="form-control" />
+                <input id="AmountARS" asp-for="AmountARS" class="form-control" value="0" />
                 <span asp-validation-for="AmountARS" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="AmountUSD" class="control-label"></label>
+                <input id="AmountUSD" asp-for="AmountUSD" class="form-control" value="0" />
+                <span asp-validation-for="AmountUSD" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <input type="submit" value="Create" class="btn bg-indigo text-white" />
@@ -42,4 +47,14 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#AmountARS").on("change", function () {
+            $("#AmountUSD").val(0);
+        });
+
+        $("#AmountUSD").on("change", function () {
+            $("#AmountARS").val(0);
+        });
+    </script>
 }
