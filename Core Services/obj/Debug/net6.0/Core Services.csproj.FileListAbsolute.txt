@@ -22,15 +22,3 @@ C:\Users\Wealthtechs\Desktop\Training\MVC App\Core Services\obj\Debug\net6.0\Cor
 C:\Users\Wealthtechs\Desktop\Training\MVC App\Core Services\obj\Debug\net6.0\refint\Core Services.dll
 C:\Users\Wealthtechs\Desktop\Training\MVC App\Core Services\obj\Debug\net6.0\Core Services.pdb
 C:\Users\Wealthtechs\Desktop\Training\MVC App\Core Services\obj\Debug\net6.0\ref\Core Services.dll
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\bin\Debug\net6.0\Core Services.deps.json
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\bin\Debug\net6.0\Core Services.dll
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\bin\Debug\net6.0\Core Services.pdb
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\Core Services.csproj.AssemblyReference.cache
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\Core Services.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\Core Services.AssemblyInfoInputs.cache
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\Core Services.AssemblyInfo.cs
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\Core Services.csproj.CoreCompileInputs.cache
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\Core Services.dll
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\refint\Core Services.dll
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\Core Services.pdb
-C:\Users\matia\OneDrive\Escritorio\DEV\Operatio\Core Services\obj\Debug\net6.0\ref\Core Services.dll

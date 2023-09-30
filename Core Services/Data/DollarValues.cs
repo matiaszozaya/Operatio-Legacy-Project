@@ -14,24 +14,35 @@ namespace Core_Services.Data
 
         public static async void GetLastDollarValues()
         {
-            using (var client = new HttpClient())
-            {
-                string url = "https://api.bluelytics.com.ar/v2/latest";
-                client.DefaultRequestHeaders.Clear();
-
-                var response = client.GetAsync(url).Result;
-                var res = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(res);
-
-                if (json.HasValues)
+            try
+            { 
+                using (var client = new HttpClient())
                 {
-                    var dollarBlueObject = json.Root["blue"];
-                    var dollarBlueValues = JObject.FromObject(dollarBlueObject);
+                    string url = "https://api.bluelytics.com.ar/v2/latest";
+                    client.DefaultRequestHeaders.Clear();
 
-                    PriceBuy = (decimal?)dollarBlueValues.Root["value_buy"];
-                    PriceSell = (decimal?)dollarBlueValues.Root["value_sell"];
-                    Date = (string?)json.Root["last_update"];
+                    var response = client.GetAsync(url).Result;
+                    var res = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(res);
+
+                    if (json.HasValues)
+                    {
+                        var dollarBlueObject = json.Root["blue"];
+                        var dollarBlueValues = JObject.FromObject(dollarBlueObject);
+
+                        PriceBuy = (decimal?)dollarBlueValues.Root["value_buy"];
+                        PriceSell = (decimal?)dollarBlueValues.Root["value_sell"];
+                        Date = (string?)json.Root["last_update"];
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                PriceBuy = 0;
+                PriceSell = 0;
+                Date = "";
+
+                var exeption = ex.Message;
             }
         }
     }

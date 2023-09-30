@@ -2,8 +2,23 @@
 
     <img src="~/assets/img/urban-931.gif" />
     <h1 class="text-dark">Welcome to <span class="fw-bold indigo">Øperatio!</span></h1>
-    <p class="text-muted">The most reliable way to make your <span class="fw-bold indigo">AR$</span> budgets!</p>
+    <p class="text-muted mb-5">The most reliable way to make your <span class="fw-bold indigo">AR$</span> budgets!</p>
+
+    <span class="text-muted">
+        Discover if you follow the 
+        <a class="fw-bold indigo rounded" style="cursor: pointer" data-bs-toggle="popover" data-bs-content="The 50/30/20 rule divides your take-home income into suggested spending in three categories: 50% of net pay for needs, 30% for wants and 20% for savings and debt repayment.">
+            50/30/20
+        </a>
+        rule!
+    </span>
     <p class="fw-bold indigo">Crete your Budget Now!</p>
     <a class="btn bg-indigo text-white" asp-area="" asp-controller="Operation" asp-action="Index">Let's Go!</a>
 
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+    </script>
+}
