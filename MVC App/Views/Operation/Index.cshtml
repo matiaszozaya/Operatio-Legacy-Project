@@ -23,7 +23,8 @@
     <h1 id="title">Operations Summary</h1>
 
     <p id="crud-options">
-        <a asp-action="Create">Create New</a> |
+        <a asp-action="Create">Add Operation</a> |
+        <a asp-action="LoadOperations" class="text-success">Reload Template</a> |
         <a asp-action="ClearOperations" class="text-danger">Remove all operations</a>
     </p>
 
@@ -76,9 +77,9 @@
                         USD$ @Html.DisplayFor(modelItem => item.AmountUSD)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        <a href="/Operation/Edit?id=@item.Id" class="btn btn-sm bg-indigo text-white">Edit</a>
+                        <a href="/Operation/Details?id=@item.Id" class="btn btn-sm btn-secondary text-white">Details</a>
+                        <a href="/Operation/Delete?id=@item.Id" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
             }
@@ -98,7 +99,8 @@ else
         <img src="~/assets/img/error-305.gif" />
     </div>
 
-    <a asp-action="Create" class="btn bg-indigo text-white">Create your first operation</a>
+    <a asp-action="Create" class="btn bg-indigo text-white mb-3">Create your first operation</a>
+    <a asp-action="LoadOperations" class="btn btn-outline-success">Load Template</a>
 }
 
 @section Scripts {

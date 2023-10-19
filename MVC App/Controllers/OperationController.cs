@@ -33,7 +33,14 @@ namespace MVC_App.Controllers
 
         public ActionResult ClearOperations()
         {
-            _operationManager.DeleteAll();
+            AppDatabase.ClearOperations();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public ActionResult LoadOperations() 
+        {
+            AppDatabase.InitializeDatabase();
 
             return RedirectToAction(nameof(Index));
         }

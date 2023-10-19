@@ -156,11 +156,11 @@ namespace Core_Services.Data
         {
             foreach (var operation in Operations)
             {
-                if(operation.AmountUSD > 0 && operation.AmountARS > 0)
-                {
-                    operation.AmountUSD = 0;
-                    operation.AmountARS = 0;
-                }
+                //if(operation.AmountUSD > 0 && operation.AmountARS > 0)
+                //{
+                //    operation.AmountUSD = 0;
+                //    operation.AmountARS = 0;
+                //}
 
                 if(operation.AmountUSD == null || operation.AmountUSD == 0)
                 {
