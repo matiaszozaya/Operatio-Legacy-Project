@@ -1,7 +1,6 @@
 ﻿using Core_Services.Abstract;
 using Core_Services.Concrete;
 using Core_Services.Data;
-using Microsoft.Extensions.DependencyInjection;
 
 DollarValues.GetLastDollarValues();
 

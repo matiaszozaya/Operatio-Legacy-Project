@@ -4,7 +4,7 @@ html, body {
     overflow-y: visible !important;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, a, td, tr {
+h1:not(i), h2:not(i), h3:not(i), h4:not(i), h5:not(i), h6:not(i), p:not(i), span:not(i), a:not(i), td:not(i), tr:not(i) {
     font-family: 'Poppins', sans-serif;
     font-family: 'Open Sans', sans-serif;
 }

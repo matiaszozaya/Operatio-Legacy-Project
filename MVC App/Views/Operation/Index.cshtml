@@ -22,18 +22,19 @@
 
     <h1 id="title">Operations Summary</h1>
 
-    <p id="crud-options">
-        <a asp-action="Create">Add Operation</a> |
-        <a asp-action="LoadOperations" class="text-success">Reload Template</a> |
-        <a asp-action="ClearOperations" class="text-danger">Remove all operations</a>
-    </p>
+    <div id="crud-options" class="d-flex flex-column mb-4">
+        <a href="" class="btn bg-indigo text-light mb-2" data-bs-toggle="modal" data-bs-target="#create-modal">Add Operation</a>
+        <div class="d-flex align-items-center">
+            <a asp-action="LoadOperations" class="text-success">Reload Template</a>
+            <span class="vr mx-2"></span>
+            <a asp-action="ClearOperations" class="text-danger">Remove all operations</a>
+        </div>
+    </div>
 
-    <a id="save-as-pdf" class="btn bg-indigo text-white mb-3">@BookPaper.PageFacingUp Save as .PDF</a>
-
-    <table class="table">
+    <table class="table w-75">
         <thead>
             <tr>
-                <th>
+                <th class="d-none">
                     @Html.DisplayNameFor(model => model.Id)
                 </th>
                 <th>
@@ -58,8 +59,7 @@
             @foreach (var item in lOperations)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
+                    <td class="d-none">
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Type)
@@ -77,8 +77,7 @@
                         USD$ @Html.DisplayFor(modelItem => item.AmountUSD)
                     </td>
                     <td>
-                        <a href="/Operation/Edit?id=@item.Id" class="btn btn-sm bg-indigo text-white">Edit</a>
-                        <a href="/Operation/Details?id=@item.Id" class="btn btn-sm btn-secondary text-white">Details</a>
+                        <button class="btn btn-sm bg-indigo text-white edit-btn" value="@item.Id">Edit</button>
                         <a href="/Operation/Delete?id=@item.Id" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
@@ -90,6 +89,70 @@
         <div class="badge bg-primary text-white p-3 me-3" style="font-size: 110%">AR$ @String.Format("{0:0.00}", totalARS)</div>
         <div class="badge bg-success p-3" style="font-size: 110%">USD$ @String.Format("{0:0.00}", totalUSD)</div>
     </div>
+
+    <a id="save-as-pdf" class="btn bg-indigo text-white">@BookPaper.PageFacingUp Save as .PDF</a>
+
+    <div id="create-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Operation</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <partial name="_Create"/>
+                </div>
+                <div class="modal-footer bg-indigo">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Operation</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="edit-modal-body" class="modal-body">
+                    <div class="w-100">
+                        <form id="Edit-Form">
+                            <input id="Edit-Id" hidden />
+                            <input id="Edit-Date" hidden />
+                            <div class="form-group mb-3">
+                                <label for="Edit-Type" class="fw-bold">Type</label>
+                                <input id="Edit-Type" class="form-control" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="Edit-Account" class="fw-bold">Account</label>
+                                <input id="Edit-Account" class="form-control" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="Edit-Description" class="fw-bold">Description</label>
+                                <input id="Edit-Description" class="form-control" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="Edit-AmountARS" class="fw-bold">AmountARS</label>
+                                <input id="Edit-AmountARS" class="form-control" required />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="Edit-AmountUSD" class="fw-bold">AmountUSD</label>
+                                <input id="Edit-AmountUSD" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn bg-indigo text-white" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer bg-indigo">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 else
 {
@@ -99,8 +162,25 @@ else
         <img src="~/assets/img/error-305.gif" />
     </div>
 
-    <a asp-action="Create" class="btn bg-indigo text-white mb-3">Create your first operation</a>
+    <a href="" data-bs-toggle="modal" data-bs-target="#create-modal" class="btn bg-indigo text-white mb-3">Create your first operation</a>
     <a asp-action="LoadOperations" class="btn btn-outline-success">Load Template</a>
+
+    <div id="create-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Operation</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <partial name="_Create" />
+                </div>
+                <div class="modal-footer bg-indigo">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 
 @section Scripts {
@@ -112,5 +192,59 @@ else
 
             $("#save-as-pdf, header, footer, img, #title, #crud-options").removeClass("d-none");
         });
+
+        $(".edit-btn").click(function () {
+            var id = $(this).val();
+            var url = "/Operation/EditView?id=" + id;
+                
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    $("#Edit-Id").val(data.id);
+                    $("#Edit-Type").val(data.type);
+                    $("#Edit-Account").val(data.account);
+                    $("#Edit-Description").val(data.description);
+                    $("#Edit-AmountARS").val(data.amountARS);
+                    $("#Edit-AmountUSD").val(data.amountUSD);
+                    $("#Edit-Date").val(data.date);
+
+                    $("#edit-modal").modal("show");
+                });
+        });
+
+        $("#Edit-Form").on("submit", function () {
+            var url = "/Operation/Edit";
+            var body = JSON.stringify
+                ({
+                    id: $("#Edit-Id").val(),
+                    type: $("#Edit-Type").val(),
+                    account: $("#Edit-Account").val(),
+                    description: $("#Edit-Description").val(),
+                    amountARS: $("#Edit-AmountARS").val(),
+                    amountUSD: $("#Edit-AmountUSD").val(),
+                    date: new Date(),
+                });
+
+            console.log(body);
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: body,
+            });
+        });
+
+        if (window.location.pathname.includes("Operation")) {
+            $("#AmountARS, #Edit-AmountARS").on("change", function () {
+                $("#AmountUSD, #Edit-AmountUSD").val(0);
+            });
+
+            $("#AmountUSD, #Edit-AmountUSD").on("change", function () {
+                $("#AmountARS, #Edit-AmountARS").val(0);
+            });
+        }
     </script>
 }

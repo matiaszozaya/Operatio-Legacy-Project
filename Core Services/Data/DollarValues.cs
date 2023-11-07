@@ -7,18 +7,17 @@ namespace Core_Services.Data
 {
     public class DollarValues
     {
-        public static decimal? PriceBuy { get; set; }
-        public static decimal? PriceSell { get; set; }
-
-        public static string? Date { get; set; }
+        public static decimal PriceBuy { get; set; }
+        public static decimal PriceSell { get; set; }
+        public static string Date { get; set; }
 
         public static async void GetLastDollarValues()
         {
             try
-            { 
+            {
                 using (var client = new HttpClient())
                 {
-                    string url = "https://api.bluelytics.com.ar/v2/latest";
+                    string url = "https://criptoya.com/api/binance/usdt/ars/1";
                     client.DefaultRequestHeaders.Clear();
 
                     var response = client.GetAsync(url).Result;
@@ -27,12 +26,14 @@ namespace Core_Services.Data
 
                     if (json.HasValues)
                     {
-                        var dollarBlueObject = json.Root["blue"];
-                        var dollarBlueValues = JObject.FromObject(dollarBlueObject);
+                        PriceBuy = (decimal)json.Root["totalBid"];
+                        decimal.Round(PriceBuy, 1);
 
-                        PriceBuy = (decimal?)dollarBlueValues.Root["value_buy"];
-                        PriceSell = (decimal?)dollarBlueValues.Root["value_sell"];
-                        Date = (string?)json.Root["last_update"];
+                        PriceSell = (decimal)json.Root["totalAsk"];
+                        decimal.Round(PriceSell, 1);
+
+                        Date = DateTime.Now.ToString();
+
                     }
                 }
             }

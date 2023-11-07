@@ -1,10 +1,10 @@
 ﻿using Core_Services.Abstract;
 using Core_Services.Data;
 using Core_Services.Entities;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MVC_App.Models;
+using System.Text.Json.Serialization.Metadata;
 
 namespace MVC_App.Controllers
 {
@@ -31,51 +31,14 @@ namespace MVC_App.Controllers
             return View();
         }
 
-        public ActionResult ClearOperations()
-        {
-            AppDatabase.ClearOperations();
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        public ActionResult LoadOperations() 
-        {
-            AppDatabase.InitializeDatabase();
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        public ActionResult Details(int id)
+        public PartialViewResult Create()
         {
             DollarValues.GetLastDollarValues();
             ViewBag.DollarValueBuy = DollarValues.PriceBuy;
             ViewBag.DollarValueSell = DollarValues.PriceSell;
             ViewBag.LastUpdate = DollarValues.Date;
 
-            var targetOperation = _operationManager.GetById(id);
-
-            var operation = new OperationViewModel 
-            { 
-                Id = id,
-                Type = targetOperation.Type,
-                Account = targetOperation.Account,
-                Description = targetOperation.Description,
-                AmountARS = targetOperation.AmountARS,
-                AmountUSD = targetOperation.AmountUSD,
-                Date = targetOperation.Date,
-            };
-
-            return View(operation);
-        }
-
-        public ActionResult Create()
-        {
-            DollarValues.GetLastDollarValues();
-            ViewBag.DollarValueBuy = DollarValues.PriceBuy;
-            ViewBag.DollarValueSell = DollarValues.PriceSell;
-            ViewBag.LastUpdate = DollarValues.Date;
-
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -97,11 +60,11 @@ namespace MVC_App.Controllers
             }
             catch
             {
-                return View();
+                return PartialView();
             }
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult EditView(int id)
         {
             DollarValues.GetLastDollarValues();
             ViewBag.DollarValueBuy = DollarValues.PriceBuy;
@@ -110,73 +73,38 @@ namespace MVC_App.Controllers
 
             var targetOperation = _operationManager.GetById(id);
 
-            var operation = new OperationViewModel
-            {
-                Id = id,
-                Type = targetOperation.Type,
-                Account = targetOperation.Account,
-                Description = targetOperation.Description,
-                AmountARS = targetOperation.AmountARS,
-                AmountUSD = targetOperation.AmountUSD,
-                Date = targetOperation.Date,
-            };
-
-            return View(operation);
+            return Json(targetOperation);
         }
 
         [HttpPost]
-        public ActionResult Edit(OperationEntity operation)
+        public ActionResult Edit([FromBody] OperationEntity operation)
         {
             try
             {
-                var operationEntity = new OperationEntity();
+                var targetOperation = _operationManager.GetById(operation.Id);
 
-                operationEntity.Id = operation.Id;
-                operationEntity.Type = operation.Type;
-                operationEntity.Account = operation.Account;
-                operationEntity.Description = operation.Description;
-                operationEntity.AmountARS = operation.AmountARS;
-                operationEntity.AmountUSD = operation.AmountUSD;
+                targetOperation.Type = operation.Type;
+                targetOperation.Account = operation.Account;
+                targetOperation.Description = operation.Description;
+                targetOperation.AmountARS = operation.AmountARS;
+                targetOperation.AmountUSD = operation.AmountUSD;
+                targetOperation.Date = DateTime.Now;
 
-                _operationManager.Update(operationEntity);
+                _operationManager.Update(targetOperation);
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                return View(ex);
             }
         }
 
         public ActionResult Delete(int id)
         {
-            DollarValues.GetLastDollarValues();
-            ViewBag.DollarValueBuy = DollarValues.PriceBuy;
-            ViewBag.DollarValueSell = DollarValues.PriceSell;
-            ViewBag.LastUpdate = DollarValues.Date;
-
-            var targetOperation = _operationManager.GetById(id);
-
-            var operation = new OperationViewModel
-            {
-                Id = id,
-                Type = targetOperation.Type,
-                Account = targetOperation.Account,
-                Description = targetOperation.Description,
-                AmountARS = targetOperation.AmountARS,
-                AmountUSD = targetOperation.AmountUSD,
-                Date = targetOperation.Date,
-            };
-
-            return View(operation);
-        }
-
-        [HttpPost]
-        public ActionResult Delete(OperationEntity operation)
-        {
             try
             {
-                _operationManager.Delete(operation.Id);
+                _operationManager.Delete(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -184,6 +112,20 @@ namespace MVC_App.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult ClearOperations()
+        {
+            AppDatabase.ClearOperations();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public ActionResult LoadOperations()
+        {
+            AppDatabase.InitializeDatabase();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
