@@ -9,27 +9,27 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group mb-3">
             <label asp-for="Type" class="fw-bold"></label>
-            <input asp-for="Type" class="form-control" placeholder="Necessity, Debt, Savings, Investment(...)" />
+            <input asp-for="Type" class="form-control form-control-sm" placeholder="Necessity, Debt, Savings, Investment(...)" />
             <span asp-validation-for="Type" class="text-danger"></span>
         </div>
         <div class="form-group mb-3">
             <label asp-for="Account" class="fw-bold"></label>
-            <input asp-for="Account" class="form-control" placeholder="Cash, BBVA, Santander(...)" />
+            <input asp-for="Account" class="form-control form-control-sm" placeholder="Cash, BBVA, Santander(...)" />
             <span asp-validation-for="Account" class="text-danger"></span>
         </div>
         <div class="form-group mb-3">
             <label asp-for="Description" class="fw-bold"></label>
-            <input asp-for="Description" class="form-control" placeholder="Rent, Health Care, Internet, Food Expenses(...)" />
+            <input asp-for="Description" class="form-control form-control-sm" placeholder="Rent, Health Care, Internet, Food Expenses(...)" />
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="form-group mb-3">
             <label asp-for="AmountARS" class="fw-bold"></label>
-            <input id="AmountARS" asp-for="AmountARS" class="form-control" value="0" />
+            <input id="AmountARS" asp-for="AmountARS" class="form-control form-control-sm" value="0" />
             <span asp-validation-for="AmountARS" class="text-danger"></span>
         </div>
         <div class="form-group mb-3">
             <label asp-for="AmountUSD" class="fw-bold"></label>
-            <input id="AmountUSD" asp-for="AmountUSD" class="form-control" value="0" />
+            <input id="AmountUSD" asp-for="AmountUSD" class="form-control form-control-sm" value="0" />
             <span asp-validation-for="AmountUSD" class="text-danger"></span>
         </div>
         <div class="form-group">

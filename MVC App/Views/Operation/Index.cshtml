@@ -22,13 +22,10 @@
 
     <h1 id="title">Operations Summary</h1>
 
-    <div id="crud-options" class="d-flex flex-column mb-4">
-        <a href="" class="btn bg-indigo text-light mb-2" data-bs-toggle="modal" data-bs-target="#create-modal">Add Operation</a>
-        <div class="d-flex align-items-center">
-            <a asp-action="LoadOperations" class="text-success">Reload Template</a>
-            <span class="vr mx-2"></span>
-            <a asp-action="ClearOperations" class="text-danger">Remove all operations</a>
-        </div>
+    <div id="crud-options" class="d-flex align-items-center justify-content-center my-4">
+        <a href="" class="btn btn-sm bg-indigo text-light" data-bs-toggle="modal" data-bs-target="#create-modal"><i class="bi bi-plus-circle"></i> Add Operation</a>
+        <a asp-action="LoadOperations" class="btn btn-sm btn-success mx-2"><i class="bi bi-arrow-repeat"></i> Reload Template</a>
+        <a asp-action="ClearOperations" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Remove all operations</a>
     </div>
 
     <table class="table w-75">
@@ -93,7 +90,7 @@
     <a id="save-as-pdf" class="btn bg-indigo text-white">@BookPaper.PageFacingUp Save as .PDF</a>
 
     <div id="create-modal" class="modal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Add Operation</h4>
@@ -110,7 +107,7 @@
     </div>
 
     <div id="edit-modal" class="modal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Operation</h4>
@@ -224,8 +221,6 @@ else
                     amountUSD: $("#Edit-AmountUSD").val(),
                     date: new Date(),
                 });
-
-            console.log(body);
 
             fetch(url, {
                 method: 'POST',
