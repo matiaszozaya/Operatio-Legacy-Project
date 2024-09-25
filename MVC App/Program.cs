@@ -1,6 +1,6 @@
-﻿using Core_Services.Abstract;
-using Core_Services.Concrete;
-using Core_Services.Data;
+﻿using MVC_App.Abstract;
+using MVC_App.Concrete;
+using MVC_App.Data;
 
 DollarValues.GetLastDollarValues();
 

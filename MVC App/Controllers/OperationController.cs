@@ -1,10 +1,7 @@
-﻿using Core_Services.Abstract;
-using Core_Services.Data;
-using Core_Services.Entities;
-using Microsoft.AspNetCore.Authorization;
+﻿using MVC_App.Abstract;
+using MVC_App.Data;
+using MVC_App.Entities;
 using Microsoft.AspNetCore.Mvc;
-using MVC_App.Models;
-using System.Text.Json.Serialization.Metadata;
 
 namespace MVC_App.Controllers
 {
@@ -94,7 +91,7 @@ namespace MVC_App.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return View(ex);
             }

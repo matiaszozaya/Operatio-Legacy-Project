@@ -1,7 +1,4 @@
-﻿using Core_Services.Concrete;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MVC_App.Models
 {
