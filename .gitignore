@@ -1,3 +1,81 @@
-MVC App/obj/
-MVC App/bin/
 MVC App/publish
+
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+packages/
+# Uncomment if needed (NuGet Package Manager files)
+# .nuget/
+
+# Ignore user-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.userprefs
+.vscode/
+
+# Ignore Rider specific files
+.idea/
+*.sln.iml
+
+# Ignore Visual Studio specific files
+.vs/
+.vscode/
+*.vcxproj.user
+*.pidb
+*.svclog
+TestResult.xml
+ncrunchsolution.xml
+nCrunchTemp_*
+.stylecop
+project.lock.json
+project.fragment.lock.json
+*.gpState
+
+# Ignore build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Bb]uild/
+[Ll]ogs/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore ASP.NET runtime files
+appsettings.*.json
+appsettings.Development.json
+
+# Ignore logs and crash reports
+*.log
+*.tlog
+*.pidb
+
+# Ignore generated files by scaffolding tools
+ScaffoldingReadMe.txt
+Generated/
+
+# Ignore dependency management
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore JetBrains Rider specific files
+.idea/
+.idea_modules/
+.idea/*.sln.iml
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/dotnettool.vcxproj/
+
+# Ignore publish output
+publish/

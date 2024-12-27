@@ -26,17 +26,6 @@ namespace MVC_App.Data
                 {
                     Id = 2,
                     Type = "Necessity",
-                    Description = $"{PlaceBuilding.Hospital} Health Care",
-                    Account = "Cash",
-                    AmountARS = (decimal?)0,
-                    AmountUSD = 0,
-                    Date = DateTime.Now,
-                },
-
-                new OperationEntity
-                {
-                    Id = 3,
-                    Type = "Necessity",
                     Description = $"{Computer.ElectricPlug} Electricity",
                     Account = "Cash",
                     AmountARS = (decimal?)0,
@@ -46,29 +35,7 @@ namespace MVC_App.Data
 
                 new OperationEntity
                 {
-                    Id = 4,
-                    Type = "Necessity",
-                    Description = $"{FoodPrepared.PoultryLeg} Food Expenses",
-                    Account = "Cash",
-                    AmountARS = (decimal?)0,
-                    AmountUSD = 0,
-                    Date = DateTime.Now,
-                },
-
-                new OperationEntity
-                {
-                    Id = 5,
-                    Type = "Necessity",
-                    Description = $"{Computer.Laptop} Internet",
-                    Account = "Cash",
-                    AmountARS = (decimal?)0,
-                    AmountUSD = 0,
-                    Date = DateTime.Now,
-                },
-
-                new OperationEntity
-                {
-                    Id = 6,
+                    Id = 3,
                     Type = "Debt",
                     Description = $"{Money.CreditCard} Visa Card | Credit Card",
                     Account = "Santander Rio",
@@ -79,7 +46,7 @@ namespace MVC_App.Data
 
                 new OperationEntity
                 {
-                    Id = 7,
+                    Id = 4,
                     Type = "Debt",
                     Description = $"{Money.CreditCard} American Express | Credit Card",
                     Account = "Santander Rio",
@@ -90,7 +57,7 @@ namespace MVC_App.Data
 
                 new OperationEntity
                 {
-                    Id = 8,
+                    Id = 5,
                     Type = "Debt",
                     Description = $"{Money.CreditCard} Visa & Naranja | Credit Cards",
                     Account = "Naranja X",
@@ -101,7 +68,7 @@ namespace MVC_App.Data
 
                 new OperationEntity
                 {
-                    Id = 9,
+                    Id = 6,
                     Type = "Debt",
                     Description = $"{Money.Dollar} Mercado Credito | Credit Line",
                     Account = "MercadoPago",
@@ -112,7 +79,7 @@ namespace MVC_App.Data
 
                 new OperationEntity
                 {
-                    Id = 10,
+                    Id = 7,
                     Type = "Debt",
                     Description = $"{Money.CreditCard} Mastercard | Credit Card",
                     Account = "Mi Carrefour",
@@ -121,9 +88,20 @@ namespace MVC_App.Data
                     Date = DateTime.Now,
                 },
 
-                new OperationEntity
+				new OperationEntity
+				{
+					Id = 8,
+					Type = "Taxes",
+					Description = $"{PersonFantasy.Supervillain} Taxes",
+					Account = "Cash",
+					AmountARS = (decimal?)0,
+					AmountUSD = 0,
+					Date = DateTime.Now,
+				},
+
+				new OperationEntity
                 {
-                    Id = 11,
+                    Id = 9,
                     Type = "Savings",
                     Description = $"{Money.MoneyWithWings} Savings",
                     Account = "Cash",
@@ -134,7 +112,7 @@ namespace MVC_App.Data
 
                 new OperationEntity
                 {
-                    Id = 12,
+                    Id = 10,
                     Type = "Investments",
                     Description = $"{Money.MoneyWithWings} Investments",
                     Account = "Cash",
@@ -157,12 +135,12 @@ namespace MVC_App.Data
 
                 if (operation.AmountUSD == null || operation.AmountUSD == 0)
                 {
-                    operation.AmountUSD = operation.AmountARS / DollarValues.PriceSell;
+                    operation.AmountUSD = operation.AmountARS / DollarValues.PriceBuy;
                 }
 
                 if (operation.AmountARS == null || operation.AmountARS == 0)
                 {
-                    operation.AmountARS = operation.AmountUSD * DollarValues.PriceSell;
+                    operation.AmountARS = operation.AmountUSD * DollarValues.PriceBuy;
                 }
             }
         }
