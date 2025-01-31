@@ -89,7 +89,7 @@
         <div class="badge bg-success p-3" style="font-size: 110%">USD$ @String.Format("{0:0.00}", totalUSD)</div>
     </div>
 
-    <a id="save-as-pdf" class="btn bg-primary text-white">@BookPaper.PageFacingUp Save as .PDF</a>
+    <a id="export-to-excel" class="btn bg-success text-white ms-2">@BookPaper.PageWithCurl Save as .XLSX</a>
 
     <div id="create-modal" class="modal" tabindex="-1">
         <div class="modal-dialog modal-md modal-dialog-centered">
@@ -177,13 +177,12 @@ else
 }
 
 @section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
     <script type="text/javascript">
-        $("#save-as-pdf").on("click", function () {
-            $("#save-as-pdf, header, footer, #hero-img, #title, #crud-options").addClass("d-none");
-
-            print();
-
-            $("#save-as-pdf, header, footer, img, #title, #crud-options").removeClass("d-none");
+        $("#export-to-excel").on("click", function () {
+            let table = document.querySelector("table");
+            let workbook = XLSX.utils.table_to_book(table, { sheet: "Operations" });
+            XLSX.writeFile(workbook, "Operations.xlsx");
         });
 
         $(".edit-btn").click(function () {

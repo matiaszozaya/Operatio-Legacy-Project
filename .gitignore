@@ -79,3 +79,7 @@ yarn.lock
 
 # Ignore publish output
 publish/
+/MVC App/Properties/PublishProfiles/FolderProfile.pubxml
+/MVC App/Properties/PublishProfiles/FolderProfile.pubxml.user
+/.vs/Operatio/DesignTimeBuild/.dtbcache.v2
+/.vs/Operatio/DesignTimeBuild/.dtbcache.v2
