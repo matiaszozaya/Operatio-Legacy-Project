@@ -1,3 +1,5 @@
+# This is a Legacy Project
+
 # ARS/USD Budget Calculator
 
 ## 📌 Overview
